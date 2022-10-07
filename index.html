@@ -3,7 +3,6 @@
 <head>
 
   <style>
-
     body {
       zoom: 66%;
     }
@@ -39,7 +38,8 @@
     }
 
     .£ {
-      background: url('images.jpg') -830px 20px;
+      background: url('images.jpg') -830px 50px;
+      background-repeat: no-repeat;
     }
 
     .f {
@@ -126,12 +126,24 @@
     .z {
       background: url('images.jpg') -810px -540px;
     }
+
+    @keyframes cursor-blink {
+      0% {
+        opacity: 0;
+      }
+    }
+
+    .cursor {
+      border-bottom: 8px solid black;
+      animation: cursor-blink 1.5s steps(2) infinite;
+    }
   </style>
 </head>
 
 <body>
 
   <input type="text" style="width: 500px;">
+  <p>Special characters: # is used as a line break, pressing ENTER should insert one. £ is used for "magic E", as in "hom£"</p>
 
   <br /><br />
 
@@ -139,11 +151,12 @@
 
   <script>
     var input = document.querySelector('input');
-    input.addEventListener('keyup', function () {
+    input.addEventListener('keyup', function (ev) {
+      if(ev.keyCode === 13) input.value += "#";
       var output = document.querySelector('#output');
-      var text = input.value.toLowerCase().split("");
+      var text = (input.value || "").toLowerCase().split("").concat("cursor");
       output.innerHTML = text.map(function (a) {
-        if(a === "#") return "<br/>";
+        if (a === "#") return "<br/>";
         return `<div class="alphablock ${a}"></div>`
       }).join("");
     });
