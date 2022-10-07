@@ -1,0 +1,154 @@
+<html>
+
+<head>
+
+  <style>
+
+    body {
+      zoom: 66%;
+    }
+
+    input {
+      zoom: 200%;
+    }
+
+    .alphablock {
+      height: 180px;
+      width: 140px;
+      display: inline-block;
+    }
+
+    .a {
+      background: url('images.jpg') -160px -10px;
+    }
+
+    .b {
+      background: url('images.jpg') -300px -10px;
+    }
+
+    .c {
+      background: url('images.jpg') -435px -10px;
+    }
+
+    .d {
+      background: url('images.jpg') -570px -10px;
+    }
+
+    .e {
+      background: url('images.jpg') -705px -10px;
+    }
+
+    .£ {
+      background: url('images.jpg') -830px 20px;
+    }
+
+    .f {
+      background: url('images.jpg') -990px 0px;
+    }
+
+    .g {
+      background: url('images.jpg') -140px -180px;
+    }
+
+    .h {
+      background: url('images.jpg') -280px -185px;
+    }
+
+    .i {
+      background: url('images.jpg') -410px -190px;
+    }
+
+    .j {
+      background: url('images.jpg') -540px -190px;
+    }
+
+    .k {
+      background: url('images.jpg') -680px -180px;
+    }
+
+    .l {
+      background: url('images.jpg') -810px -180px;
+    }
+
+    .m {
+      background: url('images.jpg') -960px -180px;
+    }
+
+    .n {
+      background: url('images.jpg') -150px -360px;
+    }
+
+    .o {
+      background: url('images.jpg') -280px -360px;
+    }
+
+    .p {
+      background: url('images.jpg') -410px -360px;
+    }
+
+    .q {
+      background: url('images.jpg') -540px -360px;
+    }
+
+    .r {
+      background: url('images.jpg') -680px -360px;
+    }
+
+    .s {
+      background: url('images.jpg') -810px -360px;
+    }
+
+    .t {
+      background: url('images.jpg') -960px -360px;
+    }
+
+
+    .u {
+      background: url('images.jpg') -150px -530px;
+    }
+
+    .v {
+      background: url('images.jpg') -280px -530px;
+    }
+
+    .w {
+      background: url('images.jpg') -410px -540px;
+    }
+
+    .x {
+      background: url('images.jpg') -540px -540px;
+    }
+
+    .y {
+      background: url('images.jpg') -680px -540px;
+    }
+
+    .z {
+      background: url('images.jpg') -810px -540px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <input type="text" style="width: 500px;">
+
+  <br /><br />
+
+  <div id="output"></div>
+
+  <script>
+    var input = document.querySelector('input');
+    input.addEventListener('keyup', function () {
+      var output = document.querySelector('#output');
+      var text = input.value.toLowerCase().split("");
+      output.innerHTML = text.map(function (a) {
+        if(a === "#") return "<br/>";
+        return `<div class="alphablock ${a}"></div>`
+      }).join("");
+    });
+  </script>
+
+</body>
+
+</html>
