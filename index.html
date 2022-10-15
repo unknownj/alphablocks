@@ -303,6 +303,8 @@
     }
 
     .word {
+      text-align: center;
+      font-size: 72pt;
       border-radius: 50px;
     }
 
@@ -847,7 +849,7 @@
           var contents = arr.slice(prev + 1, i);
           var icon = "";
           if(faicons.indexOf(contents.join("")) >= 0){
-            icon = `<i class="fa-regular fa-${contents.join("")}"></i>`;
+            icon = `<i class="fa-regular fa-${contents.join("")}" data-fa-transform="up-6"></i>`;
           }
           return `<div class="alphablock word word-${contents.join("")}">${icon}</div>` + (a === "#" ? "<br/>" : "");
         }
