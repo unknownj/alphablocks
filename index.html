@@ -1359,6 +1359,7 @@
           }
           var op = `<div class="alphablock word last-word-${lastWord} word-${contents.join("")}">${icon}</div>` + (a === "#" ? "<br/>" : "");
           lastWord = contents.join("");
+          return op;
         }
         return `<div class="alphablock ${a}"></div>`;
       }).join("");
