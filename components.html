@@ -1,0 +1,481 @@
+<html>
+
+<head>
+
+  <script src="components.js"></script>
+
+  <style>
+    .axis,
+    text.graphline {
+      font-family: Consolas;
+      font-size: 8pt;
+    }
+
+    text.graphline {
+      fill: #000;
+    }
+
+    .graphpoint~.graphline {
+      opacity: 0;
+    }
+
+    .graphpoint:hover~.graphline {
+      opacity: 1;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="canvas">
+
+  </div>
+
+  <script>
+
+    var canvas = document.getElementById("canvas");
+
+
+
+    /*
+    var n = 3;
+    
+    svg.appendChild(el.draw.regularNGon(n, 100, 100, 50, true, 0));
+    svg.appendChild(el.draw.regularNGon(n, 220, 100, 50, true, 90));
+    svg.appendChild(el.draw.regularNGon(n, 340, 100, 50, true, 180));
+
+    svg.appendChild(el.draw.regularNGon(n, 100, 220, 50, false, 0));
+    svg.appendChild(el.draw.regularNGon(n, 220, 220, 50, false, 90));
+    svg.appendChild(el.draw.regularNGon(n, 340, 220, 50, false, 180));
+
+    svg.appendChild(el.draw.cog(100, 340, 37.5, 50, 6));
+    svg.appendChild(el.draw.cog(220, 340, 37.5, 50, 6, 90));
+    svg.appendChild(el.draw.cog(340, 340, 37.5, 50, 8));
+    
+    var x = el.draw.cog(460, 340, 40, 50, 16);
+    svg.appendChild(x);
+    x.setAttribute("fill","url(#g1)");
+    
+    svg.appendDefs(el.draw.gradient("g1",["#f80","#80f","#888"],"horizontal"));
+    */
+
+    var reducers = {
+      concat: function (a, b) {
+        return a.concat(b);
+      },
+      max: function (a, b) {
+        return Math.max(a, b);
+      },
+      min: function (a, b) {
+        return Math.min(a, b);
+      }
+    };
+
+    var graph = function (options) {
+
+      var width = options.width || 640;
+      var height = options.height || 480;
+      var minXAxisLength = options.minXAxisLength || 0;
+      var minYAxisLength = options.minYAxisLength || 0;
+
+      var exports = {};
+
+      var svg = el.draw.svg(width, height, undefined, undefined, { border: "3px solid rgba(0,0,0,0.2)" });
+
+      var buffer = 40;
+      var padding = 15;
+
+      var plotArea = {
+        yMin: height - buffer,
+        yMax: buffer,
+        xMin: buffer,
+        xMax: width - buffer
+      };
+
+      plotArea.height = plotArea.yMin - plotArea.yMax;
+      plotArea.width = plotArea.xMax - plotArea.xMin;
+
+      var graphToSVG = function (x, y) {
+        return {
+          x: (plotArea.width * x / 100) + plotArea.xMin,
+          y: plotArea.yMin - (plotArea.height * y / 100),
+          toXY: function (delimiter) {
+            return this.x + delimiter + this.y;
+          }
+        };
+      };
+
+      var chartArea = el.draw("polyline[points=" + [[0, 0], [0, 100], [100, 100], [100, 0], [0, 0]].map(function (a) { return graphToSVG(a[0], a[1]).toXY(","); }).join(" ") + "]");
+      chartArea.setAttribute("stroke", "#0000");
+      chartArea.setAttribute("fill", "#0001");
+      svg.appendChild(chartArea);
+
+      var xAxis = el.draw("polyline[points=" + graphToSVG(0, 0).toXY(",") + " " + graphToSVG(100, 0).toXY(",") + "]");
+      xAxis.setAttribute("stroke", "#0008");
+      svg.appendChild(xAxis);
+
+      var xAxis2 = el.draw("polyline[points=" + graphToSVG(0, 100).toXY(",") + " " + graphToSVG(100, 100).toXY(",") + "]");
+      xAxis2.setAttribute("stroke", "#0008");
+      svg.appendChild(xAxis2);
+
+      var yAxis = el.draw("polyline[points=" + graphToSVG(0, 0).toXY(",") + " " + graphToSVG(0, 100).toXY(",") + "]");
+      yAxis.setAttribute("stroke", "#0008");
+      svg.appendChild(yAxis);
+
+      var yAxis2 = el.draw("polyline[points=" + graphToSVG(100, 0).toXY(",") + " " + graphToSVG(100, 100).toXY(",") + "]");
+      yAxis2.setAttribute("stroke", "#0008");
+      svg.appendChild(yAxis2);
+
+      var drawTick = function (directionality, amount, label) {
+        if (directionality === "vertical") {
+          var tickY = graphToSVG(0, amount).y;
+
+          svg.appendChild(el.draw("polyline.axis.y.tick[stroke=#000][points=" + [
+            [plotArea.xMin, tickY],
+            [plotArea.xMin - 10, tickY]
+          ].map(function (a) { return a.join(","); }).join(" ") + "]"));
+
+          svg.appendChild(el.draw("polyline.axis.y.tick[stroke=#000][points=" + [
+            [plotArea.xMax, tickY],
+            [plotArea.xMax + 10, tickY]
+          ].map(function (a) { return a.join(","); }).join(" ") + "]"));
+
+          svg.appendChild(el.draw("polyline.axis.y.gridline[stroke=#0002][points=" + [
+            [plotArea.xMin, tickY],
+            [plotArea.xMax, tickY]
+          ].map(function (a) { return a.join(","); }).join(" ") + "]"));
+
+          svg.appendChild(el.draw("text.axis.y.label[dominant-baseline=middle][text-anchor=end][x=" + (plotArea.xMin - 15) + "][y=" + tickY + "]", label));
+          svg.appendChild(el.draw("text.axis.y.label[dominant-baseline=middle][text-anchor=start][x=" + (plotArea.xMax + 15) + "][y=" + tickY + "]", label));
+
+        } else {
+
+          var tickX = graphToSVG(amount, 0).x;
+
+          svg.appendChild(el.draw("polyline.axis.x.tick[stroke=#000][points=" + [
+            [tickX, plotArea.yMin],
+            [tickX, plotArea.yMin + 10]
+          ].map(function (a) { return a.join(","); }).join(" ") + "]"));
+
+          svg.appendChild(el.draw("polyline.axis.x.tick[stroke=#000][points=" + [
+            [tickX, plotArea.yMax],
+            [tickX, plotArea.yMax - 10]
+          ].map(function (a) { return a.join(","); }).join(" ") + "]"));
+
+          svg.appendChild(el.draw("polyline.axis.x.gridline[stroke=#0002][points=" + [
+            [tickX, plotArea.yMin],
+            [tickX, plotArea.yMax]
+          ].map(function (a) { return a.join(","); }).join(" ") + "]"));
+
+          svg.appendChild(el.draw("text.axis.x.label[text-anchor=middle][y=" + (plotArea.yMin + 20) + "][x=" + tickX + "]", label));
+          svg.appendChild(el.draw("text.axis.x.label[text-anchor=middle][y=" + (plotArea.yMax - 20) + "][x=" + tickX + "]", label));
+
+
+        }
+      };
+
+
+      var getTickMarks = function (min, max, asDate) {
+        if(asDate){
+          // calculate number of days between min and max
+          var days = Math.ceil((max - min) / 86400000);
+
+          // calculate distance between ticks so that we have no more than 16 ticks
+          var tickDistance = Math.ceil(days / 16);
+
+          return {
+            min: min,
+            max: max,
+            range: max - min,
+            stepSize: tickDistance * 86400000,
+            numberOfSteps: Math.ceil(days / tickDistance),
+            numberOfTicks: Math.ceil(days / tickDistance) + 1
+          }
+        }
+        if (max > 1) {
+
+          var distanceBetweenMinAndMax = max - min;
+          var firstDigitOfDifference = 1 * distanceBetweenMinAndMax.toString().substr(0, 1);
+          var base = Math.pow(10, distanceBetweenMinAndMax.toString().split(".")[0].length - 1);
+
+          var steps;
+          if (firstDigitOfDifference > 4) {
+            steps = base;
+          } else if (firstDigitOfDifference >= 2) {
+            steps = base / 2;
+          } else {
+            steps = base / 5;
+          }
+
+          var lowerBound = Math.floor(min / steps) * steps;
+          var upperBound = Math.ceil(max / steps) * steps;
+          var numberOfSteps = (upperBound - lowerBound) / steps;
+          var numberOfTicks = numberOfSteps + 1;
+
+          return {
+            min: lowerBound,
+            max: upperBound,
+            range: upperBound - lowerBound,
+            stepSize: steps,
+            numberOfSteps: numberOfSteps,
+            numberOfTicks: numberOfTicks
+          };
+        }
+      };
+
+      var series = [
+        {
+          name: "Series 1",
+          points: [
+            ["2022-10-10", 50.5],
+            ["2022-10-11", 50.6],
+            ["2022-10-12", 60.1],
+            ["2022-10-13", 70.7],
+            ["2022-10-14", 101.2],
+            ["2022-10-15", 80.9],
+            ["2022-10-30", 90.0]
+          ]
+        }
+      ];
+
+      var fixTimezone = function(date) {
+        return date;
+        var offset = date.getTimezoneOffset();
+        return new Date(date.getTime() + offset * 60 * 1000);
+      }
+
+      var treatXAsDate = false;
+      var xPoints = series
+        .map(function (s) {
+          return s.points.map(function (p) {
+            if (typeof p[0] === "number") return p[0];
+            if (typeof p[0] === "string" && p[0].split("-").length === 3){
+              treatXAsDate = true;
+              return fixTimezone(new Date(p[0])).getTime();
+            }
+          });
+        })
+        .reduce(reducers.concat, []);
+      var xMax = xPoints.reduce(reducers.max);
+      var xMin = xPoints.reduce(reducers.min);
+      var xParams = getTickMarks(xMin, xMax, treatXAsDate);
+        console.log(xParams);
+
+      var yPoints = series
+        .map(function (s) {
+          return s.points.map(function (p) {
+            return p[1];
+          });
+        })
+        .reduce(reducers.concat, []);
+      var yMax = yPoints.reduce(reducers.max);
+      var yMin = yPoints.reduce(reducers.min);
+      var yParams = getTickMarks(yMin, yMax);
+
+      for (var i = xParams.min; i <= xParams.max; i += xParams.stepSize) {
+        drawTick("horizontal", (i - xParams.min) * 100 / xParams.range, treatXAsDate ? new Date(i).toISOString().split("T")[0] : i);
+      }
+
+      for (var i = yParams.min; i <= yParams.max; i += yParams.stepSize) {
+        drawTick("vertical", (i - yParams.min) * 100 / yParams.range, i);
+      }
+
+      var pointsToChartLine = function (points, color) {
+        var graphLine = el.draw("polyline[opacity=0.5][fill=none][stroke=" + (color || "#000") + "][stroke-width=3][points=" + points.map(function (a) {
+          var x = a[0];
+          var y = a[1];
+          if(typeof a[0] === "string" && a[0].split("-").length === 3) x = fixTimezone(new Date(a[0])).getTime();
+          return graphToSVG(
+            100 * (x - xParams.min) / xParams.range,
+            100 * (y - yParams.min) / yParams.range
+          ).toXY(",");
+        }).join(" ") + "]");
+
+        return [graphLine].concat(points.map(function (p) {
+
+          var x = p[0];
+          var y = p[1];
+          if(typeof x === "string" && x.split("-").length === 3) x = fixTimezone(new Date(x)).getTime();
+
+          var a = p;
+          var g = el.draw("g");
+
+          var c = el.draw.circle(
+            graphToSVG(100 * (x - xParams.min) / xParams.range, 100 * (y - yParams.min) / yParams.range).x,
+            graphToSVG(100 * (x - xParams.min) / xParams.range, 100 * (y - yParams.min) / yParams.range).y, 5, { fill: (color || "#000") });
+          g.appendChild(c);
+
+          var czone = el.draw.circle(
+            graphToSVG(100 * (x - xParams.min) / xParams.range, 100 * (y - yParams.min) / yParams.range).x,
+            graphToSVG(100 * (x - xParams.min) / xParams.range, 100 * (y - yParams.min) / yParams.range).y,
+            15
+          );
+          czone.classList.add("graphpoint");
+          czone.setAttribute("opacity", 0);
+          g.appendChild(czone);
+
+          var l1 = el.draw.line(
+            graphToSVG(100 * (x - xParams.min) / xParams.range, 100 * (y - yParams.min) / yParams.range).x,
+            graphToSVG(100 * (x - xParams.min) / xParams.range, 100 * (y - yParams.min) / yParams.range).y,
+            graphToSVG(100 * (x - xParams.min) / xParams.range, 0).x,
+            graphToSVG(100 * (x - xParams.min) / xParams.range, 0).y,
+            {
+              stroke: (color || "#000"),
+              "stroke-width": 1,
+              "stroke-dasharray": "5,5"
+            });
+          l1.classList.add("graphline");
+          g.appendChild(l1);
+
+          var l2 = el.draw.line(
+            graphToSVG(100 * (x - xParams.min) / xParams.range, 100 * (y - yParams.min) / yParams.range).x,
+            graphToSVG(100 * (x - xParams.min) / xParams.range, 100 * (y - yParams.min) / yParams.range).y,
+            graphToSVG(0, 100 * (y - yParams.min) / yParams.range).x,
+            graphToSVG(0, 100 * (y - yParams.min) / yParams.range).y,
+            {
+              stroke: (color || "#000"),
+              "stroke-width": 1,
+              "stroke-dasharray": "5,5"
+            });
+
+          l2.classList.add("graphline");
+          g.appendChild(l2);
+
+
+
+          var t = el.draw([
+            "text.graphline",
+            "[pointer-events=none]",
+            "[dominant-baseline=middle]",
+            "[text-anchor=middle]",
+            "[x=" + graphToSVG(100 * (x - xParams.min) / xParams.range, 100 * (y - yParams.min) / yParams.range).x + "]",
+            "[y=" + (graphToSVG(100 * (x - xParams.min) / xParams.range, 100 * (y - yParams.min) / yParams.range).y - 15) + "]"
+          ].join(""), p[0] + ", "+ p[1]);
+          t.style.fontWeight = "bolder";
+          g.appendChild(t);
+
+          return g;
+        }));
+      }
+
+      pointsToChartLine(series[0].points, "#00f").forEach(function (a) { svg.appendChild(a); });
+
+
+
+      return svg;
+
+
+    }
+
+    var a = graph({
+      width: 960,
+      height: 300,
+      minXAxisLength: 10,
+      minYAxisLength: 10
+    });
+    canvas.appendChild(a);
+
+    /*
+    
+        // Create graph elements axis
+        var graph = {
+          vAxis: el.draw.line(graphToSVG(0,0).x, graphToSVG(0,0).y, graphToSVG(0,0).x, graphToSVG(0,400).y, {stroke: "black", "stroke-width": 2}),
+          hAxis: el.draw.line(graphToSVG(0,0).x, graphToSVG(0,0).y, graphToSVG(560,0).x, graphToSVG(560,0).y, {stroke: "black", "stroke-width": 2}),
+          vTicks: [],
+          addVTicks: function(tickDistance, tickDepth, maxTick, optionalStyle) {
+            for (var i = 0; i <= maxTick; i += tickDistance) {
+              this.vTicks.push(el.draw.line(
+                graphToSVG(0  , i).x,
+                graphToSVG(0  , i).y,
+                graphToSVG(0-tickDepth, i).x,
+                graphToSVG(0-tickDepth, i).y,
+                optionalStyle
+              ));
+              this.vTicks.push(el.draw("text.axis[dominant-baseline=middle][text-anchor=end][x=" + graphToSVG(0-tickDepth-3,0).x + "][y=" + graphToSVG(0, i).y + "]",i));
+            }
+          },
+          hTicks: [],
+          addHTicks: function(tickDistance, tickDepth, maxTick, optionalStyle) {
+            for (var i = 0; i <= maxTick; i += tickDistance) {
+              this.hTicks.push(el.draw.line(
+                graphToSVG(i , 0).x,
+                graphToSVG(i , 0).y,
+                graphToSVG(i , 0-tickDepth).x,
+                graphToSVG(i , 0-tickDepth).y,
+                optionalStyle
+              ));
+              this.hTicks.push(el.draw("text.axis[text-anchor=middle][x=" + graphToSVG(i,0).x + "][y=" + graphToSVG(i,0-2*tickDepth-3).y + "]",i));
+            }
+          },
+        }
+    
+        
+        graph.addVTicks(50, 10, 400, {stroke: "black", "stroke-width": 1});
+        graph.addHTicks(50, 10, 560, {stroke: "black", "stroke-width": 1});
+        
+        for(var k in graph){
+          if(graph[k].tagName){
+            svg.appendChild(graph[k]);
+          } else if(typeof graph[k].push === "function"){
+            graph[k].forEach(function(e){ svg.appendChild(e); });
+          }
+        }
+    
+        svg.appendDefs(el.draw("clipPath#grapharea[clipPathUnits=objectBoundingBox]",el.draw("rect[x=0][y=0][width=1][height=1]")));
+    
+        pointsToChartLine([
+          [0,0],
+          [50,50],
+          [100,150],
+          [150,150],
+          [200,120],
+          [250,100],
+          [300,125]
+        ],"blue").forEach(function(e){
+          svg.appendChild(e);
+        });
+        
+        pointsToChartLine([
+          [0,0],
+          [50,60],
+          [100,180],
+          [150,190],
+          [200,110],
+          [250,70],
+          [300,25]
+        ],"green").forEach(function(e){
+          svg.appendChild(e);
+        });
+        
+        pointsToChartLine([
+          [0,0],
+          [50,30],
+          [100,40],
+          [150,50],
+          [200,20],
+          [250,5],
+          [300,0]
+        ],"red").forEach(function(e){
+          svg.appendChild(e);
+        });
+        
+        pointsToChartLine([
+          [0,0],
+          [50,4],
+          [100,16],
+          [150,64],
+          [200,256],
+          [250,1024],
+          [300,2048]
+        ],"magenta").forEach(function(e){
+          svg.appendChild(e);
+        });
+    
+    */
+
+  </script>
+
+</body>
+
+</html>
