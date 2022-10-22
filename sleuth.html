@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+  </head>
+
+  <body style="margin: auto; padding: auto; text-align: center;">
+
+      <svg viewbox="0 0 79 34" id="zzz">
+        
+      </svg>
+    
+
+    <script>
+
+function makeRoom2(x,y,w,h){
+        document.querySelector("svg#zzz").innerHTML += `<rect x="${x-0.5}" y="${y-0.5}" width="${w+1}" height="${h+1}" fill="#a00" stroke="#aaa" stroke-width="1"></rect>`;  
+      }
+
+      function makeRoom(x,y,w,h,col,txt){
+        document.querySelector("svg#zzz").innerHTML += `
+          <rect x="${x-0.5}" y="${y-0.5}" width="${w+1}" height="${h+1}" fill="${col}" stroke="#000" stroke-width="0.4">
+            <animate
+              attributeName="stroke-width"
+              values="0.4;0.4;1;1;1;0.4;0.4"
+              dur="10s"
+              repeatCount="indefinite" />  
+            <animate
+              attributeName="fill"
+              values="${col};#a00;${col}"
+              dur="10s"
+              repeatCount="indefinite" />  
+            <animate
+              attributeName="stroke"
+              values="#000;#aaa;#000"
+              dur="10s"
+              repeatCount="indefinite" />  
+          </rect>`;  
+        if(txt) document.querySelector("svg#zzz").innerHTML += `
+          <text x="${x + (w / 2)}" y="${y - 0.5 + (h/2)}" style="font-size: 1px; font-family: Verdana" text-anchor="middle" alignment-baseline="middle">
+            <animate
+              attributeName="opacity"
+              values="1;1;0;0;0;1;1"
+              dur="10s"
+              repeatCount="indefinite" />  
+            ${txt.toUpperCase()}
+          </text>`;  
+        if(txt) document.querySelector("svg#zzz").innerHTML += `
+          <text x="${x + (w / 2)}" y="${y + 0.5 + (h/2)}" style="font-size: 0.9px; font-family: Verdana" text-anchor="middle" alignment-baseline="middle">
+            <animate
+              attributeName="opacity"
+              values="1;1;0;0;0;1;1"
+              dur="10s"
+              repeatCount="indefinite" />  
+            ${w/2.5}m x ${h/2.5}m
+          </text>`;  
+      }
+
+      makeRoom(1,2,14,12,"cornsilk","Dining Room");
+      makeRoom(1,15,14,3,"peru","Secret Passageway");
+      makeRoom(1,19,14,13,"cornsilk","Living Room");
+
+      makeRoom(16,1,7,31,"peru");
+
+      makeRoom(24,2,14,10,"orange","Kitchen");
+      makeRoom(24,13,14,7,"orange","Pantry");
+      makeRoom(24,21,14,11,"cornsilk","Conservatory");
+
+
+      makeRoom(41,2,14,8,"paleturquoise","Master Bathroom");
+      makeRoom(41,11,14,11,"blanchedalmond","Library");
+      makeRoom(41,23,14,9,"blanchedalmond","Guest Room");
+
+      makeRoom(56,2,7,30,"peru");
+
+      makeRoom(64,2,14,14,"blanchedalmond","Master Bedroom");
+      makeRoom(64,17,14,15,"blanchedalmond","Study");
+
+      makeRoom(16,28,3,4,"white");
+      makeRoom(60,28,3,4,"white");
+
+      document.querySelector("svg#zzz").innerHTML += `
+      <text x="40" y="10" style="font-size: 6px; font-family: Verdana" text-anchor="middle" alignment-baseline="middle">
+            <animate
+              attributeName="opacity"
+              values="0.1;0.3;0.1;0.6;0.1;0.3;0.1"
+              dur="10s"
+              repeatCount="indefinite" />  
+            Ian Holmes, Sleuth
+          </text>
+          `;
+
+      document.querySelector("svg#zzz").innerHTML += `
+      <text x="40" y="20" style="font-size: 6px; font-family: Verdana" text-anchor="middle" alignment-baseline="middle">
+            <animate
+              attributeName="opacity"
+              values="0.1;0.3;0.1;0.6;0.1;0.3;0.1"
+              dur="10s"
+              repeatCount="indefinite" />  
+            Coming Christmas 2022
+          </text>
+          `;
+    
+    // width 58
+    // height 41
+
+    </script>
+
+  </body>
+</html>
