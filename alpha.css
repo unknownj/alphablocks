@@ -38,3 +38,7 @@ div.alphablock.faicon {
   font-size: 72pt;
   border-radius: 50px;
 }
+
+div#curated {
+  zoom: 33%;
+}

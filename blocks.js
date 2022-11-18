@@ -3,6 +3,7 @@ var input = document.querySelector('input#text');
 var render = function(){
 
   var output = document.querySelector('#output');
+  var curated = document.querySelector("div#curated");
 
   var lines = input.value.split("#").map(function (line) {
     return line.trim().split(" ");
@@ -11,6 +12,10 @@ var render = function(){
   // remove all child nodes from output
   while (output.firstChild) {
     output.removeChild(output.firstChild);
+  }
+
+  while (curated.firstChild) {
+    curated.removeChild(curated.firstChild);
   }
 
   lines.forEach(function(line){
@@ -29,6 +34,16 @@ var render = function(){
       );
     })));
   })
+
+  lines.forEach(function(line){
+    line.forEach(function(word, wordIndex, wordArray){
+      if(faicons.indexOf(word) >= 0){
+        curated.appendChild(
+          el.make("div.alphablock.faicon[style=border: 5px solid #f0f]", el.make("i.fa-regular.fa-" + word + "[data-fa-transform=up-6]"))
+        );
+      }
+    });
+  });
 /*
   output.innerHTML = text.map(function (a, i, arr) {
     if (a === " " || a === "cursor" || a === "#") {
