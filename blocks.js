@@ -14,10 +14,10 @@ var render = function(){
   }
 
   lines.forEach(function(line){
-    output.appendChild(el.make("div.line", line.map(function(word){
+    output.appendChild(el.make("div.line", line.map(function(word, wordIndex, wordArray){
       return el.make(
-        "div.word." + word,
-        word.split("").map(function(letter){
+        "div.word." + word + (wordIndex > 0 ? ".last-word-" + wordArray[wordIndex - 1] : ""),
+        word.split("").map(function(letter, letterIndex, letterArray){
           return el.make("div.alphablock." + letter);
         })
         .concat(
