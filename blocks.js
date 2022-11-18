@@ -22,7 +22,7 @@ var render = function(){
         })
         .concat(
           faicons.indexOf(word) >= 0 ?
-            el.make("div.alphablock", el.make("i.fa-regular.fa-" + word + "[data-fa-transform=up-6]"))
+            el.make("div.alphablock.faicon", el.make("i.fa-regular.fa-" + word + "[data-fa-transform=up-6]"))
             :
             []
         )
