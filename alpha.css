@@ -1,0 +1,31 @@
+div#output {
+  zoom: 66%;
+}
+
+input#text {
+  width: 500px;
+}
+
+.alphablock {
+  height: 180px;
+  width: 140px;
+  display: inline-block;
+}
+
+@keyframes cursor-blink {
+  0% {
+    opacity: 0;
+  }
+}
+
+div.alphablock.cursor {
+  border-bottom: 8px solid black;
+  border-radius: 0px;
+  animation: cursor-blink 1.5s steps(2) infinite;
+}
+
+.word {
+  text-align: center;
+  font-size: 72pt;
+  border-radius: 50px;
+}

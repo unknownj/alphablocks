@@ -1,0 +1,1373 @@
+<html>
+
+<head>
+
+  <style>
+    body {
+      zoom: 66%;
+    }
+
+    input {
+      zoom: 200%;
+    }
+
+    .alphablock {
+      height: 180px;
+      width: 140px;
+      display: inline-block;
+    }
+
+    .a {
+      background: url('images.jpg') -160px -10px;
+    }
+
+    .b {
+      background: url('images.jpg') -300px -10px;
+    }
+
+    .c {
+      background: url('images.jpg') -435px -10px;
+    }
+
+    .d {
+      background: url('images.jpg') -570px -10px;
+    }
+
+    .e {
+      background: url('images.jpg') -705px -10px;
+    }
+
+    .£ {
+      background: url('images.jpg') -830px 50px;
+      background-repeat: no-repeat;
+    }
+
+    .f {
+      background: url('images.jpg') -990px 0px;
+    }
+
+    .g {
+      background: url('images.jpg') -140px -180px;
+    }
+
+    .h {
+      background: url('images.jpg') -280px -185px;
+    }
+
+    .i {
+      background: url('images.jpg') -410px -190px;
+    }
+
+    .j {
+      background: url('images.jpg') -540px -190px;
+    }
+
+    .k {
+      background: url('images.jpg') -680px -180px;
+    }
+
+    .l {
+      background: url('images.jpg') -810px -180px;
+    }
+
+    .m {
+      background: url('images.jpg') -960px -180px;
+    }
+
+    .n {
+      background: url('images.jpg') -150px -360px;
+    }
+
+    .o {
+      background: url('images.jpg') -280px -360px;
+    }
+
+    .p {
+      background: url('images.jpg') -410px -360px;
+    }
+
+    .q {
+      background: url('images.jpg') -540px -360px;
+    }
+
+    .r {
+      background: url('images.jpg') -680px -360px;
+    }
+
+    .s {
+      background: url('images.jpg') -810px -360px;
+    }
+
+    .t {
+      background: url('images.jpg') -960px -360px;
+    }
+
+
+    .u {
+      background: url('images.jpg') -150px -530px;
+    }
+
+    .v {
+      background: url('images.jpg') -280px -530px;
+    }
+
+    .w {
+      background: url('images.jpg') -410px -540px;
+    }
+
+    .x {
+      background: url('images.jpg') -540px -540px;
+    }
+
+    .y {
+      background: url('images.jpg') -680px -540px;
+    }
+
+    .z {
+      background: url('images.jpg') -810px -540px;
+    }
+
+    .nb {
+      width: 45px;
+      height: 45px;
+      display: inline-block;
+      border: 3px solid rgb(255, 255, 255);
+    }
+
+    .nb1 {
+      background: #DE151D
+    }
+
+    .nb2 {
+      background: #E89223
+    }
+
+    .nb3 {
+      background: #E6C40C
+    }
+
+    .nb4 {
+      background: #38B500
+    }
+
+    .nb5 {
+      background: #23B0DB
+    }
+
+    .nb6 {
+      background: #5A35C3
+    }
+
+    .nb7 {
+      background: #BA79DD
+    }
+
+    .nb8 {
+      background: #FD40A4
+    }
+
+    .nb9 {
+      background: #A5A9AC
+    }
+
+    .nb9a {
+      background: #8A8B8F
+    }
+
+    .nb9b {
+      background: #A5A9AC
+    }
+
+    .nb9c {
+      background: #C4C8CB
+    }
+
+    .nb10 {
+      background: #EEEEEE;
+      border-color: #DE151D;
+    }
+
+    .nb20 {
+      background: #FFECAC
+    }
+
+    @keyframes cursor-blink {
+      0% {
+        opacity: 0;
+      }
+    }
+
+    .cursor {
+      border-bottom: 8px solid black;
+      animation: cursor-blink 1.5s steps(2) infinite;
+    }
+
+    .gnb {
+      margin-left: 10px;
+      margin-right: 10px;
+      display: inline-grid;
+      grid-template-columns: 45px 45px 45px;
+      grid-template-rows: 45px 45px 45px 45px 45px 45px 45px 45px 45px;
+      grid-template-areas:
+        "b19 b20 b21"
+        "b16 b17 b18"
+        "b13 b14 b15"
+        "b10 b11 b12"
+        "b7 b8 b9"
+        "b4 b5 b6"
+        "b1 b2 b3";
+    }
+
+    .n1 {
+      grid-area: b1;
+    }
+
+    .n2 {
+      grid-area: b2;
+    }
+
+    .n3 {
+      grid-area: b3;
+    }
+
+    .n4 {
+      grid-area: b4;
+    }
+
+    .n5 {
+      grid-area: b5;
+    }
+
+    .n6 {
+      grid-area: b6;
+    }
+
+    .n7 {
+      grid-area: b7;
+    }
+
+    .n8 {
+      grid-area: b8;
+    }
+
+    .n9 {
+      grid-area: b9;
+    }
+
+    .n10 {
+      grid-area: b10;
+    }
+
+    .n11 {
+      grid-area: b11;
+    }
+
+    .n12 {
+      grid-area: b12;
+    }
+
+    .n13 {
+      grid-area: b13;
+    }
+
+    .n14 {
+      grid-area: b14;
+    }
+
+    .n15 {
+      grid-area: b15;
+    }
+
+    .n16 {
+      grid-area: b16;
+    }
+
+    .n17 {
+      grid-area: b17;
+    }
+
+    .n18 {
+      grid-area: b18;
+    }
+
+    .n19 {
+      grid-area: b19;
+    }
+
+    .n20 {
+      grid-area: b20;
+    }
+
+    .n21 {
+      grid-area: b21;
+    }
+
+    .word {
+      text-align: center;
+      font-size: 72pt;
+      border-radius: 50px;
+    }
+
+    .word-red {
+      background: red;
+    }
+
+    .word-green {
+      background: green;
+    }
+
+    .word-blue {
+      background: blue;
+    }
+
+    .word-yellow {
+      background: yellow;
+    }
+
+    .word-orange {
+      background: orange;
+    }
+
+    .word-purple {
+      background: purple;
+    }
+
+    .word-pink {
+      background: pink;
+    }
+
+    .word-brown {
+      background: brown;
+    }
+
+    .word-grey {
+      background: grey;
+    }
+
+    .word-white {
+      background: white;
+    }
+
+    .word-black {
+      background: black;
+    }
+
+    .word-bisque {
+      background: bisque;
+    }
+
+    .word-cyan {
+      background: cyan;
+    }
+
+    .word-darkblue {
+      background: darkblue;
+    }
+
+    .word-darkcyan {
+      background: darkcyan;
+    }
+
+    .word-darkgoldenrod {
+      background: darkgoldenrod;
+    }
+
+    .word-darkgray {
+      background: darkgray;
+    }
+
+    .word-darkgreen {
+      background: darkgreen;
+    }
+
+    .word-darkgrey {
+      background: darkgrey;
+    }
+
+    .word-darkkhaki {
+      background: darkkhaki;
+    }
+
+    .word-darkmagenta {
+      background: darkmagenta;
+    }
+
+    .word-darkolivegreen {
+      background: darkolivegreen;
+    }
+
+    .word-darkorange {
+      background: darkorange;
+    }
+
+    .word-darkorchid {
+      background: darkorchid;
+    }
+
+    .word-darkred {
+      background: darkred;
+    }
+
+    .word-darksalmon {
+      background: darksalmon;
+    }
+
+    .word-darkseagreen {
+      background: darkseagreen;
+    }
+
+    .word-darkslateblue {
+      background: darkslateblue;
+    }
+
+    .word-darkslategray {
+      background: darkslategray;
+    }
+
+    .word-darkslategrey {
+      background: darkslategrey;
+    }
+
+    .word-darkturquoise {
+      background: darkturquoise;
+    }
+
+    .word-darkviolet {
+      background: darkviolet;
+    }
+
+    .word-deeppink {
+      background: deeppink;
+    }
+
+    .word-deepskyblue {
+      background: deepskyblue;
+    }
+
+    .word-dimgray {
+      background: dimgray;
+    }
+
+    .word-dimgrey {
+      background: dimgrey;
+    }
+
+    .word-gold {
+      background: gold;
+    }
+
+    .word-greenyellow {
+      background: greenyellow;
+    }
+
+    .word-indigo {
+      background: indigo;
+    }
+
+    .word-khaki {
+      background: khaki;
+    }
+
+    .word-lightblue {
+      background: lightblue;
+    }
+
+    .word-lightcoral {
+      background: lightcoral;
+    }
+
+    .word-lightcyan {
+      background: lightcyan;
+    }
+
+    .word-lightgoldenrodyellow {
+      background: lightgoldenrodyellow;
+    }
+
+    .word-lightgray {
+      background: lightgray;
+    }
+
+    .word-lightgreen {
+      background: lightgreen;
+    }
+
+    .word-lightgrey {
+      background: lightgrey;
+    }
+
+    .word-lightpink {
+      background: lightpink;
+    }
+
+    .word-lightsalmon {
+      background: lightsalmon;
+    }
+
+    .word-lightseagreen {
+      background: lightseagreen;
+    }
+
+    .word-lightskyblue {
+      background: lightskyblue;
+    }
+
+    .word-lightslategray {
+      background: lightslategray;
+    }
+
+    .word-lightslategrey {
+      background: lightslategrey;
+    }
+
+    .word-lightsteelblue {
+      background: lightsteelblue;
+    }
+
+    .word-lime {
+      background: lime;
+    }
+
+    .word-limegreen {
+      background: limegreen;
+    }
+
+    .word-magenta {
+      background: magenta;
+    }
+
+    .word-mediumaquamarine {
+      background: mediumaquamarine;
+    }
+
+    .word-mediumblue {
+      background: mediumblue;
+    }
+
+    .word-mediumorchid {
+      background: mediumorchid;
+    }
+
+    .word-mediumpurple {
+      background: mediumpurple;
+    }
+
+    .word-mediumseagreen {
+      background: mediumseagreen;
+    }
+
+    .word-mediumslateblue {
+      background: mediumslateblue;
+    }
+
+    .word-mediumspringgreen {
+      background: mediumspringgreen;
+    }
+
+    .word-mediumturquoise {
+      background: mediumturquoise;
+    }
+
+    .word-mediumvioletred {
+      background: mediumvioletred;
+    }
+
+    .word-midnightblue {
+      background: midnightblue;
+    }
+
+    .word-navy {
+      background: navy;
+    }
+
+    .word-olive {
+      background: olive;
+    }
+
+    .word-olivedrab {
+      background: olivedrab;
+    }
+
+    .word-orangered {
+      background: orangered;
+    }
+
+    .word-orchid {
+      background: orchid;
+    }
+
+    .word-saddlebrown {
+      background: saddlebrown;
+    }
+
+    .word-seagreen {
+      background: seagreen;
+    }
+
+    .word-sienna {
+      background: sienna;
+    }
+
+    .word-aqua {
+      background: aqua;
+    }
+
+    .word-aquamarine {
+      background: aquamarine;
+    }
+
+    .word-azure {
+      background: azure;
+    }
+
+    .word-beige {
+      background: beige;
+    }
+
+    .word-bisque {
+      background: bisque;
+    }
+
+    .word-black {
+      background: black;
+    }
+
+    .word-blue {
+      background: blue;
+    }
+
+    .word-brown {
+      background: brown;
+    }
+
+    .word-chartreuse {
+      background: chartreuse;
+    }
+
+    .word-chocolate {
+      background: chocolate;
+    }
+
+    .word-coral {
+      background: coral;
+    }
+
+    .word-cornsilk {
+      background: cornsilk;
+    }
+
+    .word-crimson {
+      background: crimson;
+    }
+
+    .word-cyan {
+      background: cyan;
+    }
+
+    .word-darkorange {
+      background: darkorange;
+    }
+
+    .word-fuchsia {
+      background: fuchsia;
+    }
+
+    .word-gainsboro {
+      background: gainsboro;
+    }
+
+    .word-gold {
+      background: gold;
+    }
+
+    .word-grey {
+      background: grey;
+    }
+
+    .word-green {
+      background: green;
+    }
+
+    .word-indigo {
+      background: indigo;
+    }
+
+    .word-ivory {
+      background: ivory;
+    }
+
+    .word-khaki {
+      background: khaki;
+    }
+
+    .word-lavender {
+      background: lavender;
+    }
+
+    .word-lime {
+      background: lime;
+    }
+
+    .word-linen {
+      background: linen;
+    }
+
+    .word-magenta {
+      background: magenta;
+    }
+
+    .word-maroon {
+      background: maroon;
+    }
+
+    .word-moccasin {
+      background: moccasin;
+    }
+
+    .word-navy {
+      background: navy;
+    }
+
+    .word-olive {
+      background: olive;
+    }
+
+    .word-orange {
+      background: orange;
+    }
+
+    .word-orchid {
+      background: orchid;
+    }
+
+    .word-peru {
+      background: peru;
+    }
+
+    .word-pink {
+      background: pink;
+    }
+
+    .word-plum {
+      background: plum;
+    }
+
+    .word-purple {
+      background: purple;
+    }
+
+    .word-red {
+      background: red;
+    }
+
+    .word-salmon {
+      background: salmon;
+    }
+
+    .word-sienna {
+      background: sienna;
+    }
+
+    .word-silver {
+      background: silver;
+    }
+
+    .word-snow {
+      background: snow;
+    }
+
+    .word-tan {
+      background: tan;
+    }
+
+    .word-teal {
+      background: teal;
+    }
+
+    .word-thistle {
+      background: thistle;
+    }
+
+    .word-tomato {
+      background: tomato;
+    }
+
+    .word-turquoise {
+      background: turquoise;
+    }
+
+    .word-violet {
+      background: violet;
+    }
+
+    .word-wheat {
+      background: wheat;
+    }
+
+    .word-white {
+      background: white;
+    }
+
+    .word-yellow {
+      background: yellow;
+    }
+
+    .last-word-red {
+      color: red;
+    }
+
+    .last-word-green {
+      color: green;
+    }
+
+    .last-word-blue {
+      color: blue;
+    }
+
+    .last-word-yellow {
+      color: yellow;
+    }
+
+    .last-word-orange {
+      color: orange;
+    }
+
+    .last-word-purple {
+      color: purple;
+    }
+
+    .last-word-pink {
+      color: pink;
+    }
+
+    .last-word-brown {
+      color: brown;
+    }
+
+    .last-word-grey {
+      color: grey;
+    }
+
+    .last-word-white {
+      color: white;
+    }
+
+    .last-word-black {
+      color: black;
+    }
+
+    .last-word-bisque {
+      color: bisque;
+    }
+
+    .last-word-cyan {
+      color: cyan;
+    }
+
+    .last-word-darkblue {
+      color: darkblue;
+    }
+
+    .last-word-darkcyan {
+      color: darkcyan;
+    }
+
+    .last-word-darkgoldenrod {
+      color: darkgoldenrod;
+    }
+
+    .last-word-darkgray {
+      color: darkgray;
+    }
+
+    .last-word-darkgreen {
+      color: darkgreen;
+    }
+
+    .last-word-darkgrey {
+      color: darkgrey;
+    }
+
+    .last-word-darkkhaki {
+      color: darkkhaki;
+    }
+
+    .last-word-darkmagenta {
+      color: darkmagenta;
+    }
+
+    .last-word-darkolivegreen {
+      color: darkolivegreen;
+    }
+
+    .last-word-darkorange {
+      color: darkorange;
+    }
+
+    .last-word-darkorchid {
+      color: darkorchid;
+    }
+
+    .last-word-darkred {
+      color: darkred;
+    }
+
+    .last-word-darksalmon {
+      color: darksalmon;
+    }
+
+    .last-word-darkseagreen {
+      color: darkseagreen;
+    }
+
+    .last-word-darkslateblue {
+      color: darkslateblue;
+    }
+
+    .last-word-darkslategray {
+      color: darkslategray;
+    }
+
+    .last-word-darkslategrey {
+      color: darkslategrey;
+    }
+
+    .last-word-darkturquoise {
+      color: darkturquoise;
+    }
+
+    .last-word-darkviolet {
+      color: darkviolet;
+    }
+
+    .last-word-deeppink {
+      color: deeppink;
+    }
+
+    .last-word-deepskyblue {
+      color: deepskyblue;
+    }
+
+    .last-word-dimgray {
+      color: dimgray;
+    }
+
+    .last-word-dimgrey {
+      color: dimgrey;
+    }
+
+    .last-word-gold {
+      color: gold;
+    }
+
+    .last-word-greenyellow {
+      color: greenyellow;
+    }
+
+    .last-word-indigo {
+      color: indigo;
+    }
+
+    .last-word-khaki {
+      color: khaki;
+    }
+
+    .last-word-lightblue {
+      color: lightblue;
+    }
+
+    .last-word-lightcoral {
+      color: lightcoral;
+    }
+
+    .last-word-lightcyan {
+      color: lightcyan;
+    }
+
+    .last-word-lightgoldenrodyellow {
+      color: lightgoldenrodyellow;
+    }
+
+    .last-word-lightgray {
+      color: lightgray;
+    }
+
+    .last-word-lightgreen {
+      color: lightgreen;
+    }
+
+    .last-word-lightgrey {
+      color: lightgrey;
+    }
+
+    .last-word-lightpink {
+      color: lightpink;
+    }
+
+    .last-word-lightsalmon {
+      color: lightsalmon;
+    }
+
+    .last-word-lightseagreen {
+      color: lightseagreen;
+    }
+
+    .last-word-lightskyblue {
+      color: lightskyblue;
+    }
+
+    .last-word-lightslategray {
+      color: lightslategray;
+    }
+
+    .last-word-lightslategrey {
+      color: lightslategrey;
+    }
+
+    .last-word-lightsteelblue {
+      color: lightsteelblue;
+    }
+
+    .last-word-lime {
+      color: lime;
+    }
+
+    .last-word-limegreen {
+      color: limegreen;
+    }
+
+    .last-word-magenta {
+      color: magenta;
+    }
+
+    .last-word-mediumaquamarine {
+      color: mediumaquamarine;
+    }
+
+    .last-word-mediumblue {
+      color: mediumblue;
+    }
+
+    .last-word-mediumorchid {
+      color: mediumorchid;
+    }
+
+    .last-word-mediumpurple {
+      color: mediumpurple;
+    }
+
+    .last-word-mediumseagreen {
+      color: mediumseagreen;
+    }
+
+    .last-word-mediumslateblue {
+      color: mediumslateblue;
+    }
+
+    .last-word-mediumspringgreen {
+      color: mediumspringgreen;
+    }
+
+    .last-word-mediumturquoise {
+      color: mediumturquoise;
+    }
+
+    .last-word-mediumvioletred {
+      color: mediumvioletred;
+    }
+
+    .last-word-midnightblue {
+      color: midnightblue;
+    }
+
+    .last-word-navy {
+      color: navy;
+    }
+
+    .last-word-olive {
+      color: olive;
+    }
+
+    .last-word-olivedrab {
+      color: olivedrab;
+    }
+
+    .last-word-orangered {
+      color: orangered;
+    }
+
+    .last-word-orchid {
+      color: orchid;
+    }
+
+    .last-word-saddlebrown {
+      color: saddlebrown;
+    }
+
+    .last-word-seagreen {
+      color: seagreen;
+    }
+
+    .last-word-sienna {
+      color: sienna;
+    }
+
+    .last-word-aqua {
+      color: aqua;
+    }
+
+    .last-word-aquamarine {
+      color: aquamarine;
+    }
+
+    .last-word-azure {
+      color: azure;
+    }
+
+    .last-word-beige {
+      color: beige;
+    }
+
+    .last-word-bisque {
+      color: bisque;
+    }
+
+    .last-word-black {
+      color: black;
+    }
+
+    .last-word-blue {
+      color: blue;
+    }
+
+    .last-word-brown {
+      color: brown;
+    }
+
+    .last-word-chartreuse {
+      color: chartreuse;
+    }
+
+    .last-word-chocolate {
+      color: chocolate;
+    }
+
+    .last-word-coral {
+      color: coral;
+    }
+
+    .last-word-cornsilk {
+      color: cornsilk;
+    }
+
+    .last-word-crimson {
+      color: crimson;
+    }
+
+    .last-word-cyan {
+      color: cyan;
+    }
+
+    .last-word-darkorange {
+      color: darkorange;
+    }
+
+    .last-word-fuchsia {
+      color: fuchsia;
+    }
+
+    .last-word-gainsboro {
+      color: gainsboro;
+    }
+
+    .last-word-gold {
+      color: gold;
+    }
+
+    .last-word-grey {
+      color: grey;
+    }
+
+    .last-word-green {
+      color: green;
+    }
+
+    .last-word-indigo {
+      color: indigo;
+    }
+
+    .last-word-ivory {
+      color: ivory;
+    }
+
+    .last-word-khaki {
+      color: khaki;
+    }
+
+    .last-word-lavender {
+      color: lavender;
+    }
+
+    .last-word-lime {
+      color: lime;
+    }
+
+    .last-word-linen {
+      color: linen;
+    }
+
+    .last-word-magenta {
+      color: magenta;
+    }
+
+    .last-word-maroon {
+      color: maroon;
+    }
+
+    .last-word-moccasin {
+      color: moccasin;
+    }
+
+    .last-word-navy {
+      color: navy;
+    }
+
+    .last-word-olive {
+      color: olive;
+    }
+
+    .last-word-orange {
+      color: orange;
+    }
+
+    .last-word-orchid {
+      color: orchid;
+    }
+
+    .last-word-peru {
+      color: peru;
+    }
+
+    .last-word-pink {
+      color: pink;
+    }
+
+    .last-word-plum {
+      color: plum;
+    }
+
+    .last-word-purple {
+      color: purple;
+    }
+
+    .last-word-red {
+      color: red;
+    }
+
+    .last-word-salmon {
+      color: salmon;
+    }
+
+    .last-word-sienna {
+      color: sienna;
+    }
+
+    .last-word-silver {
+      color: silver;
+    }
+
+    .last-word-snow {
+      color: snow;
+    }
+
+    .last-word-tan {
+      color: tan;
+    }
+
+    .last-word-teal {
+      color: teal;
+    }
+
+    .last-word-thistle {
+      color: thistle;
+    }
+
+    .last-word-tomato {
+      color: tomato;
+    }
+
+    .last-word-turquoise {
+      color: turquoise;
+    }
+
+    .last-word-violet {
+      color: violet;
+    }
+
+    .last-word-wheat {
+      color: wheat;
+    }
+
+    .last-word-white {
+      color: white;
+    }
+
+    .last-word-yellow {
+      color: yellow;
+    }
+  </style>
+
+<script src="https://kit.fontawesome.com/604e944b86.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <script>
+    var faicons = ["bagel","transporter7","at","stethoscope","coffin","message","salad","info","theta","explosion","ring","wifi2","tally4","volleyball","ufo","fork","shovel","films","nfc","atom","soap","icons","fingerprint","h1","football","crop","beer","transporter","burn","person","male","laptop","menorah","union","sigma","bong","clarinet","pastafarianism","spoon","merge","pager","grid","grid3","trees","strikethrough","page","eggplant","ram","lips","pencil","backward","comments","paste","pumpkin","blueberries","note","circle9","blog","torah","fence","up","quidditch","drumstick","archive","grapes","scarecrow","elephant","rainbow","paw","cloud","square3","flushed","microwave","gavel","legal","browsers","trillium","binoculars","motorcycle","sunglasses","badge","tombstone","scissors","cut","hyphen","table","pickleball","clover","meat","reply","helicopter","bird","compass","joystick","swatchbook","bars","navicon","hourglass3","humidity","corn","radar","sickle","film","coconut","lightbulb","block","sitemap","donate","memory","squirrel","flag","hanukiah","feather","swords","album","compress","ankh","asterisk","luchador","shredder","sandwich","heading","header","ghost","abacus","list","gamepad","dizzy","egg","campground","jug","futbol","paintbrush","lock","monkey","pro","blanket","tree","backpack","edit","knife","hourglass2","microscope","sunset","sink","mitten","right","users","cucumber","hand","om","pi","worm","plug","popsicle","command","blinds","stopwatch","saxophone","square2","webcam","kiss","period","raygun","flute","acorn","deaf","deafness","eclipse","stamp","stairs","hryvnia","pills","tooth","sparkles","squid","calendars","bicycle","pear","triangle","apartment","ambulance","pepper","piano","snowman","school","igloo","parenthesis","joint","filters","horse","whistle","fragile","escalator","temperature2","thermometer2","donut","doughnut","capsules","tally1","baguette","semicolon","bookmark","battery1","bullseye","sushi","nigiri","bacon","option","folder","mug","radiation","crutches","vial","gauge","dashboard","lambda","pizza","h3","user","sensor","comma","dumpster","highlighter","key","tamale","bullhorn","steak","globe","synagogue","mailbox","scalpel","ban","cancel","star","repeat","cross","box","cactus","maximize","shapes","transporter1","peanuts","shuffle","random","running","spider","window","ear","lasso","slash","mouse","pegasus","square6","server","intersection","family","hourglass1","send","apostrophe","venus","passport","heartbeat","circle8","microchip","crown","weight","books","snooze","zzz","farm","burrito","violin","wheelchair","walking","stars","fire","procedures","laugh","candy","soup","flatbread","city","sheep","unlock","headset","h4","taco","clipboard","wifi","wifi3","messages","bath","bathtub","underline","signature","stroopwafel","bold","transporter3","tilde","jedi","poll","gift","volume","transporter5","glasses","cheeseburger","repeat1","grid5","tally","tally5","train","00","crow","betamax","sailboat","mistletoe","custard","sunrise","frog","bucket","image","microphone","cow","screwdriver","forklift","columns","tick","lemon","handshake","gem","dolly","smoking","minimize","refrigerator","monument","snowplow","cannabis","tablets","ethernet","eur","euro","chair","bat","chopsticks","icicles","neuter","kazoo","marker","aperture","volcano","stocking","smoke","gbp","viruses","certificate","suitcase","skating","banjo","kerning","scroll","spa","strawberry","pause","temperature0","thermometer0","bomb","registered","vcard","subscript","directions","integral","burst","tired","smog","crutch","palette","transporter4","vest","pig","construction","ferry","seedling","sprout","flashlight","square9","thunderstorm","watch","text","projector","circle6","left","wreath","children","chalkboard","blackboard","signal4","lollipop","lollypop","alicorn","refresh","sync","atlas","virus","archway","square","memo","couch","italic","church","snowmobile","democrat","pinball","skiing","deer","mace","sausage","snowflake","stomach","newspaper","ad","locust","sort","unsorted","list12","kidneys","language","dagger","podium","filter","question","code","krw","won","pie","leaf","road","taxi","cab","alien8bit","poop","telescope","kaaba","starship","eject","seal","tarp","tools","heart","parentheses","cocktail","surprise","folders","angel","rabbit","temperature1","thermometer1","cube","shutters","tally3","elevator","circle","sword","recycle","trademark","basketball","slider","wallet","staff","burger","hamburger","transporter6","wrench","bugs","rupee","typewriter","popcorn","bridge","cat","files","route","panorama","tags","parking","dolphin","terminal","tape","chestnut","eye","heat","hexagon","manhole","pen","signal","signal5","pump","bus","dryer","frown","diploma","screencast","walker","prescription","shop","save","vihara","commenting","scarf","diamond","bacterium","redo","balloon","biohazard","location","phone","narwhal","toothbrush","square5","puzzle","debug","digging","brightness","ornament","trash","poo","guitars","hose","shirt","tshirt","cubes","divide","square7","tenge","headphones","campfire","snowflakes","republican","ruler","restroom","galaxy","cherries","th","siren","landscape","curling","bible","medkit","rv","otter","dreidel","female","tanakh","rows","washer","child","satellite","tag","stretcher","inboxes","comment","square1","cake","envelope","paperclip","ribbon","lungs","h6","indent","hourglass","mountain","camera","meteor","sleigh","square4","waveform","water","braille","landmark","truck","crosshairs","alien","tent","screenshot","octagon","cookie","undo","hdd","reel","dumbbell","grate","sportsball","subway","inr","dna","circle5","minus","subtract","flame","gif","chess","presentation","gear","cog","mosque","duck","mosquito","vials","moped","circle7","split","peapod","axe","raindrops","dash","clock","pallet","faucet","overline","timeline","keyboard","ballot","cards","temperature3","thermometer3","makizushi","racquet","battery3","coins","olive","khanda","outlet","sliders","cauldron","people","croissant","hamsa","flask","router","ticket","coin","citrus","tty","teletype","badminton","hiking","images","calculator","shuttlecock","garage","tram","sprinkler","sledding","ship","download","shelves","inventory","grin","backspace","oven","eyedropper","scribble","glass","loader","forward","mobile","meh","outdent","dedent","house","home","pipe","potato","butter","castle","exchange","utensils","cutlery","balloons","skull","banana","loveseat","stop","upload","hurricane","mound","windsock","caravan","bolt","zap","vault","mars","toilet","cny","jpy","rmb","yen","notes","rouble","rub","ruble","sun","guitar","square8","brackets","signal2","industry","grill","analytics","mountains","omega","ellipsis","bells","toolbox","bug","car","automobile","cabin","bluetooth","messaging","drone","medal","bed","podcast","bee","temperature4","thermometer4","bell","pinata","superscript","circle0","crab","file","quotes","pretzel","swimmer","notebook","droplet","tint","eraser","earth","dove","battery0","grid4","socks","inbox","square0","section","hospital","reorder","stream","dharmachakra","broccoli","hotdog","blind","angle90","kite","drum","scrubber","fax","paragraph","speaker","timer","boxes","link","chain","play","font","search","diagnoses","signal3","peach","lobster","colon","wand","receipt","transporter2","battery","battery5","hospitals","club","dewpoint","envelopes","tv","television","shrimp","tasks","mushroom","megaphone","wind","snowboarding","circle1","fish","fog","waffle","starfighter","adjust","clapperboard","mango","baseball","pedestal","sidebar","copy","grip","keynote","gun","plus","add","expand","computer","fort","xmark","close","multiply","remove","times","arrows","rhombus","baby","tractor","symbols","copyright","bracket","h2","equals","shortcake","peanut","blender","teeth","tally2","ils","shekel","sheqel","cars","map","rocket","store","angle","sign","tablet","fill","bacteria","clouds","notdef","disease","turntable","genderless","signal1","retweet","frame","battery2","radio","thermometer","percent","percentage","display","smile","thumbtack","trophy","pray","hammer","speakers","alt","dial","rotate","spinner","whale","robot","peace","gears","cogs","warehouse","splotch","meter","mandolin","transgender","mercury","spade","pennant","award","building","camcorder","pancakes","qrcode","fireplace","browser","history","trumpet","shield","avocado","binary","ditto","scythe","cricket","tents","magic","dog","ampersand","carrot","moon","cheese","music","biking","skeleton","broom","vacuum","melon","gopuram","hashtag","hippo","vhs","infinity","chimney","voicemail","fan","turtle","calendar","trailer","bahai","haykal","wifi1","dragon","unlink","clone","tornado","quran","anchor","function","angry","rss","feed","tachometer","shower","desktop","creemee","h5","sms","rectangle","turkey","book","check","battery4","tomato","buildings","lamp","airplay","briefcase","portrait","rug","cowbell","corner","inhaler","handcuffs","snake","warning","database","share","columns3","dungeon","scanner","tire","engine","hands","signing","wheat","grimace","dice","unicorn","pompebled","brain","bandage","circle4","gifts","hotel","onion","allergies","garlic","coffee","brush","mask","flower","boombox","syringe","stopwatch20","falafel","circle2","magnet","jar","gramophone","down","100","cupcake","boot","bone","circle3","firewall","plane","exclamation","print","try","dollar","usd","bank","institution","museum","university","sack","grid2","cctv","umbrella","trowel","stapler","pineapple","eyes","comet","barcode","video"];
+  </script>
+
+  <input type="text" style="width: 500px;">
+  <p>Special characters: # is used as a line break, pressing ENTER should insert one. £ is used for "magic E", as in
+    "hom£"</p>
+
+  <br /><br />
+
+  <div id="output"></div>
+
+
+  <script>
+    var input = document.querySelector('input');
+    input.addEventListener('keyup', function (ev) {
+
+      if (ev.keyCode === 13) input.value += "#";
+
+      var output = document.querySelector('#output');
+
+      var text = (input.value || "").toLowerCase().split("").concat("cursor");
+
+      var lastWord = "";
+
+      output.innerHTML = text.map(function (a, i, arr) {
+        if (a === " " || a === "cursor" || a === "#") {
+          // find the previous instance of space in the array
+          var prev = Math.max(arr.slice(0, i).lastIndexOf(" "), arr.slice(0, i).lastIndexOf("#"));
+          // get the contents of the array between the #
+          var contents = arr.slice(prev + 1, i);
+          var icon = "";
+          if(faicons.indexOf(contents.join("")) >= 0){
+            icon = `<i class="fa-regular fa-${contents.join("")}" data-fa-transform="up-6"></i>`;
+          }
+          var op = `<div class="alphablock word last-word-${lastWord} word-${contents.join("")}">${icon}</div>` + (a === "#" ? "<br/>" : "");
+          lastWord = contents.join("");
+          return op;
+        }
+        return `<div class="alphablock ${a}"></div>`;
+      }).join("");
+
+
+    });
+  </script>
+
+</body>
+
+</html>
