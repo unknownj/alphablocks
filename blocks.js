@@ -1,14 +1,35 @@
 var input = document.querySelector('input#text');
-input.addEventListener('keyup', function (ev) {
 
-  if (ev.keyCode === 13) input.value += "#";
+var render = function(){
 
   var output = document.querySelector('#output');
 
-  var text = (input.value || "").toLowerCase().split("").concat("cursor");
+  var lines = input.value.split("#").map(function (line) {
+    return line.trim().split(" ");
+  });
 
-  var lastWord = "";
+  // remove all child nodes from output
+  while (output.firstChild) {
+    output.removeChild(output.firstChild);
+  }
 
+  lines.forEach(function(line){
+    output.appendChild(el.make("div.line", line.map(function(word){
+      return el.make(
+        "div.word." + word,
+        word.split("").map(function(letter){
+          return el.make("div.alphablock." + letter);
+        })
+        .concat(
+          faicons.indexOf(word) >= 0 ?
+            el.make("div.alphablock", el.make("i.fa-regular.fa-" + word + "[data-fa-transform=up-6]"))
+            :
+            []
+        )
+      );
+    })));
+  })
+/*
   output.innerHTML = text.map(function (a, i, arr) {
     if (a === " " || a === "cursor" || a === "#") {
       // find the previous instance of space in the array
@@ -25,6 +46,13 @@ input.addEventListener('keyup', function (ev) {
     }
     return `<div class="alphablock ${a}"></div>`;
   }).join("");
+*/
+}
 
+input.addEventListener('keyup', function (ev) {
+
+  if (ev.keyCode === 13) input.value += "#";
+
+  render();
 
 });

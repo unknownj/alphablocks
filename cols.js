@@ -132,8 +132,9 @@ var colnames = [
 
 var colString = colnames.map(function(colname){
   return `
-.word-${colname} {
+.word.${colname} {
   background: ${colname};
+  border-bottom: 3px solid ${colname};
 }
 .last-word-${colname} {
   color: ${colname};
