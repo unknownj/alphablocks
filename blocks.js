@@ -39,11 +39,24 @@ var render = function(){
     line.forEach(function(word, wordIndex, wordArray){
       if(faicons.indexOf(word) >= 0){
         curated.appendChild(
-          el.make("div.word." + word + (wordIndex > 0 ? ".last-word-" + wordArray[wordIndex - 1] : "") + ".alphablock.faicon", el.make("i.fa-regular.fa-" + word + "[data-fa-transform=up-6]"))
+          el.make("div.word." + word + (wordIndex > 0 ? ".last-word-" + wordArray[wordIndex - 1] : "") + ".faicon", el.make("i.fa-regular.fa-" + word + "[data-fa-transform=up-6]"), {fontSize: "72pt", display: "inline-block", marginRight: "40px"})
         );
       }
     });
   });
+}
+
+input.addEventListener('keyup', function (ev) {
+
+  if (ev.keyCode === 13) input.value += "#";
+
+  render();
+
+});
+
+
+
+
 /*
   output.innerHTML = text.map(function (a, i, arr) {
     if (a === " " || a === "cursor" || a === "#") {
@@ -62,12 +75,3 @@ var render = function(){
     return `<div class="alphablock ${a}"></div>`;
   }).join("");
 */
-}
-
-input.addEventListener('keyup', function (ev) {
-
-  if (ev.keyCode === 13) input.value += "#";
-
-  render();
-
-});
