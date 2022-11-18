@@ -39,7 +39,7 @@ var render = function(){
     line.forEach(function(word, wordIndex, wordArray){
       if(faicons.indexOf(word) >= 0){
         curated.appendChild(
-          el.make("div.alphablock.faicon[style=border: 5px solid #f0f]", el.make("i.fa-regular.fa-" + word + "[data-fa-transform=up-6]"))
+          el.make("div.word." + word + (wordIndex > 0 ? ".last-word-" + wordArray[wordIndex - 1] : "") + ".alphablock.faicon", el.make("i.fa-regular.fa-" + word + "[data-fa-transform=up-6]"))
         );
       }
     });
