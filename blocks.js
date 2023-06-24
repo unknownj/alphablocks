@@ -20,6 +20,7 @@ var render = function(){
 
   lines.forEach(function(line){
     output.appendChild(el.make("div.line", line.map(function(word, wordIndex, wordArray){
+      if(word === "apple") word = "apple-whole";
       return el.make(
         "div.word." + word + (wordIndex > 0 ? ".last-word-" + wordArray[wordIndex - 1] : ""),
         word.split("").map(function(letter, letterIndex, letterArray){
