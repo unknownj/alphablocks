@@ -1,4 +1,5 @@
 var faicons = [
+  "apple-whole",
   "bagel",
   "transporter7",
   "at",
